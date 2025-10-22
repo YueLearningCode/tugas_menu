@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tugas Menu</title>
+  <!-- Bootstrap 5.3.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap 5.3.3 JS Bundle (includes Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- jQuery 3.7.1 -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+  <!-- bootstrap icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================================================
+   GLOBAL SETTINGS
+========================================================= */
+    body {
+      margin: 0;
+      background: #fafafa;
+    }
+
+    .dropdown-toggle::after {
+      display: none;
+    }
+
+    .bg-black {
+      background-color: #121618 !important;
+    }
+
+    /* =========================================================
+   NAVBAR STYLING
+========================================================= */
+    .transition-navbar {
+      transition: all 0.4s ease-in-out;
+      box-shadow: none;
+    }
+
+    /* Navbar saat di-scroll (fixed) */
+    .navbar-scrolled {
+      background-color: rgba(0, 0, 0, 0.95) !important;
+      padding: 0.5rem 0 !important;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+      transition: all 0.4s ease-in-out;
+    }
+
+    /* Hover efek menu navbar */
+    .navbar-nav .nav-link,
+    .nav-tabs .nav-link {
+      color: #fff;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .navbar-nav .nav-link::after,
+    .nav-tabs .nav-link::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: #e4b86f;
+      transition: width 0.3s ease;
+    }
+
+    .navbar-nav .nav-link:hover,
+    .nav-tabs .nav-link:hover {
+      color: #e4b86f;
+    }
+
+    .navbar-nav .nav-link:hover::after,
+    .nav-tabs .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* =========================================================
+   CAROUSEL / HERO SECTION
+========================================================= */
+    .carousel-caption {
+      bottom: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+    }
+
+    .hero {
+      transition: all 0.3s ease !important;
+    }
+
+    /* =========================================================
+   SECTION BACKGROUNDS & DIVIDERS
+========================================================= */
+    .features {
+      background: url(images/back_2.png) no-repeat center center/cover;
+      background-attachment: fixed;
+    }
+
+    /* Zig-zag bawah */
+    .sharp-bottom::after {
+      background-image: linear-gradient(rgba(18, 22, 24, 1), rgba(18, 22, 24, 1)), linear-gradient(-45deg, transparent 75%, rgba(18, 22, 24, 1) 75%), linear-gradient(45deg, transparent 75%, rgba(18, 22, 24, 1) 75%);
+      width: 200%;
+      height: 10px;
+      position: absolute;
+      display: block;
+      content: "";
+      left: 0;
+      top: 0;
+      border: solid transparent;
+      border-width: 10px 0;
+      background-color: #121618;
+      background-color: hsla(0, 0%, 0%, 0);
+      background-repeat: repeat, repeat-x, repeat-x, repeat-x, repeat-x;
+      background-position: 0 0, 0 0, 0 0, 0 100%, 0 100%;
+      background-size: auto auto, 25px 45px, 25px 45px, 50px 50px, 50px 50px;
+      background-clip: padding-box, border-box, border-box, border-box, border-box;
+      background-origin: padding-box, border-box, border-box, border-box, border-box;
+      z-index: 100;
+    }
+
+    /* Zig-zag atas */
+    .sharp-top::after {
+      background-image: linear-gradient(rgba(18, 22, 24, 1), rgba(18, 22, 24, 1)), linear-gradient(-45deg, transparent 75%, rgba(18, 22, 24, 1) 75%), linear-gradient(45deg, transparent 75%, rgba(18, 22, 24, 1) 75%);
+      bottom: 0;
+      -webkit-transform: rotate(180deg);
+      transform: rotate(180deg);
+      width: 200%;
+      height: 10px;
+      position: absolute;
+      display: block;
+      content: "";
+      left: 0;
+      border: solid transparent;
+      border-width: 10px 0;
+      background-color: #121618;
+      background-color: hsla(0, 0%, 0%, 0);
+      background-repeat: repeat, repeat-x, repeat-x, repeat-x, repeat-x;
+      background-position: 0 0, 0 0, 0 0, 0 100%, 0 100%;
+      background-size: auto auto, 15px 15px, 15px 15px, 15px 15px, 15px 15px;
+      background-clip: padding-box, border-box, border-box, border-box, border-box;
+      background-origin: padding-box, border-box, border-box, border-box, border-box;
+      z-index: 100;
+    }
+
+    /* =========================================================
+   TESTIMONIES SECTION
+========================================================= */
+    .testimonies {
+      background: url('images/imgi_66_back_3.jpg') no-repeat center center/cover;
+      background-attachment: fixed;
+    }
+
+    .circular_image {
+      border-radius: 50% !important;
+    }
+
+    .card-trans {
+      background: rgba(255, 255, 255, 0) !important;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .card-trans:hover {
+      background: rgba(255, 255, 255, 0.1) !important;
+      backdrop-filter: blur(10px);
+    }
+
+    /* =========================================================
+   BLOG SECTION
+========================================================= */
+    .blog {
+      background: url('images/imgi_64_back_1.jpg') center/cover no-repeat;
+      background-attachment: fixed;
+      position: relative;
+      z-index: 1;
+    }
+
+    .blog-card a.btn {
+      border: 2px solid #000;
+      color: #000;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    .blog-card a.btn:hover {
+      background-color: #000;
+      color: #fbc02d;
+      letter-spacing: 1px;
+    }
+
+    /* =========================================================
+   UTILITIES & EFFECTS
+========================================================= */
+    #medsos {
+      transition: all 0.3s ease;
+    }
+
+    #medsos:hover {
+      color: #fbc02d !important;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg bg-black navbar-dark py-4 transition-navbar">
+    <div class="container-fluid">
+      <div class="row w-100 mx-3 align-items-center">
+        <!-- Logo -->
+        <div class="col-lg-12 col-11 text-lg-center">
+          <a class="navbar-brand fw-bold" href="#">
+            <img src="images/yue_coffe.png" class="img-fluid" width="160" alt="">
+          </a>
+        </div>
+
+        <!-- Toggler -->
+        <div class="col-lg-12 col-1 text-end">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+
+        <!-- Menu -->
+        <div class="col-12">
+          <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+            <!-- Left Contact -->
+            <div class="contact-info d-none d-lg-flex flex-wrap align-items-center me-auto text-white">
+              <i class="h4 mb-0 bi bi-phone me-2"></i>
+              <div>
+                <p class="mb-0">+62 8956-1866-2960</p>
+                <small>8:00 am – 11:30 pm</small>
+              </div>
+            </div>
+
+            <!-- Nav Links -->
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0 text-center">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Menu</a>
+              </li>
+              <li class="nav-item dropdown-center">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">Special Offer</a>
+                <ul class="dropdown-menu bg-black text-center">
+                  <li><a class="dropdown-item text-white" href="#">Service</a></li>
+                  <li><a class="dropdown-item text-white" href="#">Foods &amp; Drinks</a></li>
+                  <li>
+                    <hr class="dropdown-divider bg-secondary">
+                  </li>
+                  <li><a class="dropdown-item text-white" href="#">About</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+              </li>
+            </ul>
+
+            <!-- Right Cart -->
+            <div class="contact-info d-none d-lg-flex ms-auto text-white align-items-center">
+              <div class="text-end me-3">
+                <p class="m-0">Rp. 100.000</p>
+                <small>0 items - View Cart</small>
+              </div>
+              <i class="h4 mb-0 bi bi-cart"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero text-white overflow-hidden position-relative row container-fluid mx-auto p-0 m-0">
+    <div class="col-12 p-0 m-0 sharp-bottom"></div>
+    <div class="col-12 p-0 m-0">
+      <div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="images/wood_background.jpg" class="d-block w-100" height="800" alt="...">
+            <div class="carousel-caption text-white w-100 h-100 ">
+              <div class="row flex-column-reverse flex-md-row w-100 h-100 container mx-auto">
+                <div class="col-12 col-md-6 my-auto">
+                  <h1 class="display-1 text-warning text-decoration-none text-start"> Y U E C O F F E E</h1>
+                  <hr style="border-top: 4px solid white;" class="opacity-100">
+                  <p class="lead text-start">Experience the finest coffee blends and cozy ambiance at Yue Coffee. Your
+                    perfect
+                    coffee moment awaits!</p>
+                  <div class="d-flex gap-2">
+                    <a class="btn btn-outline-warning " href="#menu">View Menu</a>
+                    <a class="btn btn-outline-light" href="#contact">Book a Table</a>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 my-auto">
+                  <img src="images/yue_coffe.png" class="img-fluid" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="images/coffe_background.jpg" class="d-block w-100" height="800" alt="...">
+            <div class="carousel-caption text-white w-100 h-100 ">
+              <div class="row w-100 h-100 container mx-auto">
+
+                <div class="col-12 my-auto">
+                  <img src="images/imgi_27_8-4-600x600.png" class="" width="400px" alt="">
+                </div>
+                <div class="col-12 my-auto">
+                  <h1 class="display-2 text-warning text-decoration-none text-center"> Y U E C O F F E E</h1>
+                  <hr style="border-top: 4px solid white;" class="opacity-100">
+                  <p class="lead text-center">Experience the finest coffee blends and cozy ambiance at Yue Coffee. Your
+                    perfect
+                    coffee moment awaits!</p>
+                  <div class="d-flex gap-2 justify-content-center">
+                    <a class="btn btn-outline-warning " href="#menu">View Menu</a>
+                    <a class="btn btn-outline-light" href="#contact">Book a Table</a>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="images/wood_background.jpg" class="d-block w-100" height="800" alt="...">
+            <div class="carousel-caption text-white w-100 h-100 ">
+              <div class="row flex-column-reverse flex-md-row w-100 h-100 container mx-auto">
+                <div class="col-12 col-md-6 my-auto">
+                  <h1 class="display-1 text-warning text-decoration-none text-start"> Y U E C O F F E E</h1>
+                  <hr style="border-top: 4px solid white;" class="opacity-100">
+                  <p class="lead text-start">Experience the finest coffee blends and cozy ambiance at Yue Coffee. Your
+                    perfect
+                    coffee moment awaits!</p>
+                  <div class="d-flex gap-2">
+                    <a class="btn btn-outline-warning " href="#menu">View Menu</a>
+                    <a class="btn btn-outline-light" href="#contact">Book a Table</a>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 my-auto">
+                  <img src="images/yue_coffe.png" class="img-fluid" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features position-relative overflow-x-hidden">
+    <div class="container py-5">
+      <div class="row py-5 text-black">
+        <div class="col-md-4 col-12 text-center">
+          <i class="bi bi-truck mb-4" style="font-size: 4.5rem;"></i>
+          <h5 class="mb-2">Fastest Delivery</h5>
+          <p class="">Lorem ipsum dolor sit amet consectetur.</p>
+        </div>
+        <div class="col-md-4 col-12 text-center">
+          <i class="bi bi-shop mb-4" style="font-size: 4.5rem;"></i>
+          <h5 class="mb-2">Quality Food</h5>
+          <p class="">Lorem ipsum dolor sit amet consectetur.</p>
+        </div>
+        <div class="col-md-4 col-12 text-center">
+          <i class="bi bi-award mb-4" style="font-size: 4.5rem;"></i>
+          <h5 class="mb-2">Original Recipes</h5>
+          <p class="">Lorem ipsum dolor sit amet consectetur.</p>
+        </div>
+      </div>
+
+    </div>
+    <div class="sharp-top"></div>
+  </section>
+
+  <!-- Hot Sales -->
+  <section class="hot-sales bg-black">
+    <div class="container py-5">
+      <div class="row text-center mb-4">
+        <div class="col-12">
+          <h2 class="fw-bold">Hot Sales</h2>
+          <p>Check out our best selling products!</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-6 col-lg-3 mb-4">
+          <div class="card card-trans border-top-0  text-center">
+            <img src="images/imgi_26_9-4-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+            <div class="card-body">
+              <h4 class="card-title my-3">Es Krim</h4>
+              <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+              <h5>Rp. 16.000</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3 mb-4">
+          <div class="card card-trans border-top-0  text-center">
+            <img src="images/imgi_55_9-1-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+            <div class="card-body">
+              <h4 class="card-title my-3">Salad</h4>
+              <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+              <h5>Rp. 16.000</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3 mb-4">
+          <div class="card card-trans border-top-0  text-center">
+            <img src="images/imgi_35_5-5-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+            <div class="card-body">
+              <h4 class="card-title my-3">Milk Shake</h4>
+              <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+              <h5>Rp. 16.000</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3 mb-4">
+          <div class="card card-trans border-top-0  text-center">
+            <img src="images/imgi_8_6-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+            <div class="card-body">
+              <h4 class="card-title my-3">Pizza</h4>
+              <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+              <h5>Rp. 16.000</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Testimonies -->
+  <section class="testimonies py-5">
+    <div class="container py-5">
+      <div class="row align-items-start gy-4">
+        <div class="col-md-6 col-12 text-black">
+          <h2 class="fw-bold display-6 mb-4">WE ARE YUE</h2>
+          <p class="text-uppercase small mb-3">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit, minus atque dolorum laudantium at
+            quo veniam esse iure, ducimus tempora totam architecto harum.
+          </p>
+          <div class="divider py-5"><img src="images/imgi_12_separator_dark.png" alt=""></div>
+          <p class="mb-3">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos non consectetur illo ipsa adipisci? Quisquam
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos aperiam minus dicta. Deserunt, eaque
+            commodi minus ea quas adipisci doloribus.
+          </p>
+        </div>
+
+        <div class="col-md-6 col-12">
+          <div class="text-black mb-4">
+            <p class="border border-black p-2 border-3">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam nihil perspiciatis sequi dolorem sunt
+              voluptatum assumenda quisquam culpa doloribus, ullam doloremque quos facilis. Pariatur, totam!
+            </p>
+            <div class="d-flex align-items-center mt-3">
+              <img src="images/miyabi.jpg" alt="Miyabi" style="width: 60px; height: 60px; object-fit: cover;"
+                class="circular_image">
+              <div class="ms-3">
+                <h6 class="fw-semibold mb-0">Miyabi</h6>
+                <small>CEO, Indonesia</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-black">
+            <p class="border border-black p-2 border-3">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, sunt dolorem! Voluptas aut vitae
+              saepe.
+            </p>
+            <div class="d-flex align-items-center mt-3">
+              <img src="images/cat_window.jpg" alt="Yue" style="width: 60px; height: 60px; object-fit: cover;"
+                class="circular_image">
+              <div class="ms-3">
+                <h6 class="fw-semibold mb-0">Yue</h6>
+                <small>Artist, Indonesia</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu -->
+  <section class="menu py-5 text-center bg-black">
+    <div class="container">
+      <h2 class="mb-4">DISCOVER OUR MENU</h2>
+
+      <ul class="nav nav-tabs text-center justify-content-center" id="menuTabs" role="tablist">
+        <li class="nav-item"><button class="nav-link active" id="burgers-tab" data-bs-toggle="tab"
+            data-bs-target="#burgers" type="button">BURGERS</button></li>
+        <li class="nav-item"><button class="nav-link" id="desserts-tab" data-bs-toggle="tab" data-bs-target="#desserts"
+            type="button">DESSERTS</button></li>
+        <li class="nav-item"><button class="nav-link" id="drinks-tab" data-bs-toggle="tab" data-bs-target="#drinks"
+            type="button">DRINKS</button></li>
+        <li class="nav-item"><button class="nav-link" id="pasta-tab" data-bs-toggle="tab" data-bs-target="#pasta"
+            type="button">PASTA</button></li>
+        <li class="nav-item"><button class="nav-link" id="pizzas-tab" data-bs-toggle="tab" data-bs-target="#pizzas"
+            type="button">PIZZAS</button></li>
+        <li class="nav-item"><button class="nav-link" id="salads-tab" data-bs-toggle="tab" data-bs-target="#salads"
+            type="button">SALADS</button></li>
+      </ul>
+
+      <div class="tab-content mt-4" id="menuTabsContent">
+        <div class="tab-pane fade show active" id="burgers" role="tabpanel">
+          <div class="row">
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_15_12-3-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Burger</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_16_11-3-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Burgers</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_17_10-3-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Black Burger</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_18_9-3-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Burger</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_22_5-3-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Burger</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_21_6-3-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Burger</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_20_7-3-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Burger</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_19_8-3-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Burger</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="desserts" role="tabpanel">
+          <div class="row">
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_23_12-4-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Desserts</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_24_11-4-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Desserts</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_29_6-4-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Desserts</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_25_10-4-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Desserts</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_26_9-4-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Desserts</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_27_8-4-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Desserts</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_28_7-4-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Desserts</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_30_5-4-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Desserts</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="drinks" role="tabpanel">
+          <div class="row">
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_31_1-5-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Drinks</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_32_2-5-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Drinks</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_35_5-5-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Milk Shake</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_34_4-5-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Drinks</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_33_3-5-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Drinks</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_36_6-5-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Drinks</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_37_7-5-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Drinks</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_38_8-5-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Drinks</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="pasta" role="tabpanel">
+          <div class="row">
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_41_10-2-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Pasta</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_42_9-2-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Pasta</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_43_8-2-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Pasta</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_44_7-2-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">pasta</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_45_6-2-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">pasta</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_46_5-2-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">pasta</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_39_12-2-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">pasta</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_40_11-2-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">pasta</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="pizzas" role="tabpanel">
+          <div class="row">
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_47_11-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Pizza</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_48_10-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Pizza</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_49_2-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Pizza</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_50_9-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Pizza</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_3_pizza_1.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Pizza</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_4_pizza_2.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Pizza</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_9_8-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Pizza</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_50_9-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Pizza</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="salads" role="tabpanel">
+          <div class="row">
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_51_12-1-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Salad</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_52_3-1-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Salad</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_53_10-1-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Salad</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_54_11-1-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Salad</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_55_9-1-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Salad</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_56_8-1-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Salad</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_57_7-1-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Salad</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="card card-trans border-top-0  text-center">
+                <img src="images/imgi_58_6-1-600x600.png" class="card-img-top pt-3 img-fluid w-75 mx-auto" alt="...">
+                <div class="card-body">
+                  <h4 class="card-title my-3">Salad</h4>
+                  <p class="card-text mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, vitae.</p>
+                  <h5>Rp. 16.000</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog -->
+  <section class="blog text-center text-dark position-relative">
+    <div class="container py-5 position-relative">
+      <p class="small text-uppercase mb-2 fw-semibold">Not Just a Coffee, But Lifestyle</p>
+      <h2 class="fw-bold mb-3">SOMETHING FROM THE BLOG</h2>
+      <div class="mb-4">
+        <hr class="mx-auto" style="width: 80px; border-top: 3px solid #000;">
+      </div>
+      <p class="mb-5 mx-auto" style="max-width: 700px;">
+        And yes, we’re coffee people. But we’re also human people. We lead with our hearts, we believe in giving back
+        to the global community. Join us — welcome to our coffee house!
+      </p>
+
+      <div class="row g-4 justify-content-center">
+        <div class="col-lg-3 col-md-6">
+          <div class="blog-card p-4 bg-transparent border-0">
+            <p class="text-uppercase small mb-1">April 6, 2025</p>
+            <h5 class="fw-bold">Healthy Coffee for Productive Morning</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit donec vel venenatis purus...
+            </p>
+            <a href="#" class="btn btn-outline-dark rounded-0 px-4 py-2 mt-2">READ MORE →</a>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="blog-card p-4 bg-transparent border-0">
+            <p class="text-uppercase small mb-1">April 6, 2025</p>
+            <h5 class="fw-bold">Coffee Design Trends in 2025</h5>
+            <p>Consectetur adipiscing elit donec vel venenatis purus fusce pretium amet faucibus...
+            </p>
+            <a href="#" class="btn btn-outline-dark rounded-0 px-4 py-2 mt-2">READ MORE →</a>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="blog-card p-4 bg-transparent border-0">
+            <p class="text-uppercase small mb-1">April 6, 2025</p>
+            <h5 class="fw-bold">3 Ingredients Coffee Latte Art</h5>
+            <p>Elit donec vel venenatis purus fusce pretium amet faucibus bibendum ligula...</p>
+            <a href="#" class="btn btn-outline-dark rounded-0 px-4 py-2 mt-2">READ MORE →</a>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="blog-card p-4 bg-transparent border-0">
+            <p class="text-uppercase small mb-1">April 6, 2025</p>
+            <h5 class="fw-bold">Coffee Essentials Giveaway!</h5>
+            <p>Fusce pretium enim amet faucibus bibendum, ligula augue accumsan magna...</p>
+            <a href="#" class="btn btn-outline-dark rounded-0 px-4 py-2 mt-2">READ MORE →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter bg-black py-5">
+    <div class="container py-5 text-center text-white">
+      <h2 class="fw-bold mb-3">SUBSCRIBE TO OUR NEWSLETTER</h2>
+      <p class="mb-4">Get updates about new products and upcoming sales</p>
+      <form class="d-flex justify-content-center align-items-center mx-auto flex-column flex-sm-row"
+        style="max-width: 700px;" action="">
+        <input type="email" class="form-control w-100 w-sm-50" placeholder="Enter your email address">
+        <button type="submit" class="btn btn-warning text-black px-4 py-2">SUBSCRIBE</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black py-5 border-top ">
+    <div class="container">
+      <div class="row justify-content-center text-center">
+        <div class="col-12 mb-md-0 text-center">
+          <img src="images/yue_coffe.png" alt="">
+          <h5 class="fw-bold mb-3">YUE COFFEE</h5>
+          <p>Your perfect coffee moment awaits!</p>
+        </div>
+        <div class="col-12 my-3">
+          <p class="mb-1">123 Coffee St, Riau, Indonesia | Phone: +62 123 4567 890 | <a
+              href="mailto:info@yuecoffee.com">Email: info@yuecoffee.com</a></p>
+        </div>
+        <div class="col-12 my-3">
+          <a href="#" aria-label="medsos" id="medsos" class="text-dark me-3"><i
+              class="bi display-6 bi-facebook"></i></a>
+          <a href="#" aria-label="medsos" id="medsos" class="text-dark me-3"><i
+              class="bi display-6 bi-instagram"></i></a>
+          <a href="#" aria-label="medsos" id="medsos" class="text-dark"><i class="bi display-6  bi-twitter-x"></i></a>
+        </div>
+      </div>
+      <div class="text-center mt-4">
+        <p class="mb-0">&copy; 2025 Yue Coffee. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- JS -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.js"></script>
+  <script>
+    $(window).on('scroll', function () {
+      var navbar = $('.navbar');
+      var hero = $('.hero');
+      var navbarHeight = navbar.outerHeight();
+
+      if ($(this).scrollTop() > 25) {
+        if (!navbar.hasClass('navbar-scrolled')) {
+          $('body').css('padding-top', navbarHeight + 'px');
+        }
+        navbar.addClass('fixed-top navbar-scrolled');
+      } else {
+        navbar.removeClass('fixed-top navbar-scrolled');
+        $('body').css('padding-top', '0');
+      }
+    });
+
+  </script>
+
+</body>
+
+</html>
